@@ -1,0 +1,43 @@
+---
+name: Release
+on:
+  push:
+    branches: [ $default-branch ]
+    paths:
+      - dist/dist.css
+  workflow_dispatch:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Automated version bump
+        id: version-bump
+        uses: phips28/gh-action-bump-version@e3cde4e376147b58cfa38832db31e73bb214266e
+        with:
+          tag-prefix: ''
+          commit-message: Release version {{version}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Generate ext.json file
+        env:
+          SN_THEME__VERSION: ${{ steps.version-bump.outputs.newTag }}
+          SN_THEME__GIT_REF: ${{ steps.version-bump.outputs.newTag }}
+          SN_THEME__GIT_REF_TYPE: tags
+        run: npm run --silent generate-ext-json > gh-pages/ext.json
+
+      - name: Update gh-pages with latest ext.json file
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Release version ${{ steps.version-bump.outputs.newTag }}"
+          file_pattern: ext.json
+          repository: gh-pages

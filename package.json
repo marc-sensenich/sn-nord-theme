@@ -1,0 +1,30 @@
+{
+  "name": "standardnotes-nord-theme",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/dist.css",
+  "devDependencies": {
+    "concurrently": "^6.0.1",
+    "http-server": "^0.12.3",
+    "husky": "^6.0.0",
+    "nord": "^0.2.1",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.8"
+  },
+  "sn": {
+    "main": "dist/dist.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/marc-sensenich/standardnotes-nord-theme.git"
+  },
+  "scripts": {
+    "generate-ext-json": "node utils/generate-ext-json.js",
+    "sass": "sass src/main.scss dist/dist.css --no-source-map",
+    "test": "sass src/main.scss",
+    "serve": "http-server -p 8001 --cors",
+    "watch-sass": "sass --watch src/main.scss:dist/dist.css",
+    "dev": "concurrently \"npm:watch-sass\" \"npm:serve\"",
+    "prepare": "husky install"
+  }
+}
