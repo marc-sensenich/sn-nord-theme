@@ -22,18 +22,33 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Remove 'v' prefix from version-bump tag
+        id: version-bump-without-v-prefix
+        run: echo "::set-output name=tag::$(echo ${{ steps.version-bump.outputs.newTag }} | tr -d v)"
+
       - name: Checkout gh-pages
         uses: actions/checkout@v2
         with:
           ref: gh-pages
           path: gh-pages
 
-      - name: Generate ext.json file
-        env:
-          SN_THEME__VERSION: ${{ steps.version-bump.outputs.newTag }}
-          SN_THEME__GIT_REF: ${{ steps.version-bump.outputs.newTag }}
-          SN_THEME__GIT_REF_TYPE: tags
-        run: npm run --silent generate-ext-json > gh-pages/ext.json
+      - name: Generate release ext.json file
+        uses: marc-sensenich/sn-extension-description-action@v1
+        with:
+          identifier: com.marc-sensenich.sn-nord-theme
+          name: Nord
+          description: An arctic, north-bluish clean and elegant Standard Notes theme.
+          content-type: SN|Theme
+          area: themes
+          version: ${{ steps.version-bump-without-v-prefix.outputs.tag }}
+          url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ steps.version-bump.outputs.newTag }}/dist/dist.css
+          download-url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip"
+          latest-url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
+          marketing-url: https://github.com/marc-sensenich/sn-nord-theme#readme
+          dock-icon-background-color: '#88C0D0'
+          dock-icon-foreground-color: '#88C0D0'
+          dock-icon-border-color: '#88C0D0'
+          output-path: gh-pages/ext.json
 
       - name: Update gh-pages with latest ext.json file
         uses: stefanzweifel/git-auto-commit-action@v4
