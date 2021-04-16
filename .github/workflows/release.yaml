@@ -38,17 +38,17 @@ jobs:
           identifier: com.marc-sensenich.sn-nord-theme
           name: Nord
           description: An arctic, north-bluish clean and elegant Standard Notes theme.
-          content-type: SN|Theme
+          content_type: SN|Theme
           area: themes
           version: ${{ steps.version-bump-without-v-prefix.outputs.tag }}
           url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ steps.version-bump.outputs.newTag }}/dist/dist.css
-          download-url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip"
-          latest-url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
-          marketing-url: https://github.com/marc-sensenich/sn-nord-theme#readme
-          dock-icon-background-color: '#88C0D0'
-          dock-icon-foreground-color: '#88C0D0'
-          dock-icon-border-color: '#88C0D0'
-          output-path: gh-pages/ext.json
+          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip"
+          latest_url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
+          marketing_url: https://github.com/marc-sensenich/sn-nord-theme#readme
+          dock_icon_background_color: '#88C0D0'
+          dock_icon_foreground-color: '#88C0D0'
+          dock_icon_border_color: '#88C0D0'
+          output_path: gh-pages/ext.json
 
       - name: Update gh-pages with latest ext.json file
         uses: stefanzweifel/git-auto-commit-action@v4
