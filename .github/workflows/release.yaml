@@ -42,7 +42,7 @@ jobs:
           area: themes
           version: ${{ steps.version-bump-without-v-prefix.outputs.tag }}
           url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ steps.version-bump.outputs.newTag }}/dist/dist.css
-          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip"
+          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip
           latest_url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
           marketing_url: https://github.com/marc-sensenich/sn-nord-theme#readme
           dock_icon_background_color: '#88C0D0'
