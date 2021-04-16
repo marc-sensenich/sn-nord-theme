@@ -1,18 +1,18 @@
 {
   "identifier": "com.marc-sensenich.sn-nord-theme",
-  "area": "themes",
-  "content_type": "SN|Theme",
   "name": "Nord",
+  "content_type": "SN|Theme",
+  "area": "themes",
+  "version": "0.1.3",
   "description": "An arctic, north-bluish clean and elegant Standard Notes theme.",
-  "version": "v0.1.1",
-  "url": "https://raw.githubusercontent.com/marc-sensenich/sn-nord-theme/v0.1.1/dist/dist.css",
-  "download_url": "https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/v0.1.1.zip",
+  "url": "https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@v0.1.3/dist/dist.css",
+  "download_url": "https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/v0.1.3.zip\"",
   "latest_url": "https://marc-sensenich.github.io/sn-nord-theme/ext.json",
-  "marketing_url": "https://github.com/marc-sensenich/sn-nord-theme",
+  "marketing_url": "https://github.com/marc-sensenich/sn-nord-theme#readme",
   "dock_icon": {
-    "type": "circle",
-    "background_color": "#88C0D0",
-    "foreground_color": "#88C0D0",
-    "border_color": "#88C0D0"
+    "dock_icon_background_color": "#88C0D0",
+    "dock_icon_foreground_color": "#FFFFFF",
+    "dock_icon_border_color": "#88C0D0",
+    "dock_icon_type": "circle"
   }
 }
