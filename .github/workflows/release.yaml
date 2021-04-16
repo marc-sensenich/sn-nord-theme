@@ -46,7 +46,7 @@ jobs:
           latest_url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
           marketing_url: https://github.com/marc-sensenich/sn-nord-theme#readme
           dock_icon_background_color: '#88C0D0'
-          dock_icon_foreground-color: '#88C0D0'
+          dock_icon_foreground_color: '#88C0D0'
           dock_icon_border_color: '#88C0D0'
           output_path: gh-pages/ext.json
 
