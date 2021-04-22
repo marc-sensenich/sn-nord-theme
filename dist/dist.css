@@ -33,9 +33,7 @@
   --sn-stylekit-secondary-background-color: var(--secondary-background-color);
   --sn-stylekit-secondary-foreground-color: #d8dee9;
   --sn-stylekit-secondary-border-color: transparent;
-  --sn-stylekit-secondary-contrast-background-color: var(
-    --contrast-background-color
-  );
+  --sn-stylekit-secondary-contrast-background-color: var(--contrast-background-color);
   --sn-stylekit-secondary-contrast-foreground-color: #eceff4;
   --sn-stylekit-secondary-contrast-border-color: transparent;
   --sn-stylekit-paragraph-text-color: #d8dee9;
@@ -46,5 +44,3 @@
   --sn-stylekit-scrollbar-track-border-color: var(--border-color);
   --sn-stylekit-scrollbar-thumb-color: var(--sn-stylekit-info-color);
 }
-
-/*# sourceMappingURL=dist.css.map */

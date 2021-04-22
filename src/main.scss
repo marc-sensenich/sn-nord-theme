@@ -49,9 +49,7 @@
   --sn-stylekit-secondary-foreground-color: #{$nord4};
   --sn-stylekit-secondary-border-color: transparent;
 
-  --sn-stylekit-secondary-contrast-background-color: var(
-    --contrast-background-color
-  );
+  --sn-stylekit-secondary-contrast-background-color: var(--contrast-background-color);
   --sn-stylekit-secondary-contrast-foreground-color: #{$nord6};
   --sn-stylekit-secondary-contrast-border-color: transparent;
 
