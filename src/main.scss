@@ -20,10 +20,10 @@
   --sn-stylekit-shadow-color: #{$nord2};
 
   --sn-stylekit-info-color: var(--highlight-color);
-  --sn-stylekit-info-contrast-color: var(--foreground-color);
+  --sn-stylekit-info-contrast-color: #{$nord0};
   --sn-stylekit-info-color-darkened: #{$nord10};
   --sn-stylekit-neutral-color: #{$nord6};
-  --sn-stylekit-neutral-contrast-color: #{$nord3};
+  --sn-stylekit-neutral-contrast-color: #{$nord4};
 
   --sn-stylekit-success-color: #{$nord14};
   --sn-stylekit-success-contrast-color: #{$nord6};
@@ -49,7 +49,9 @@
   --sn-stylekit-secondary-foreground-color: #{$nord4};
   --sn-stylekit-secondary-border-color: transparent;
 
-  --sn-stylekit-secondary-contrast-background-color: var(--contrast-background-color);
+  --sn-stylekit-secondary-contrast-background-color: var(
+    --contrast-background-color
+  );
   --sn-stylekit-secondary-contrast-foreground-color: #{$nord6};
   --sn-stylekit-secondary-contrast-border-color: transparent;
 
