@@ -3,10 +3,10 @@
   "name": "Nord",
   "content_type": "SN|Theme",
   "area": "themes",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "An arctic, north-bluish clean and elegant Standard Notes theme.",
-  "url": "https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@v0.1.7/dist/dist.css",
-  "download_url": "https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/v0.1.7.zip",
+  "url": "https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@v0.1.8/dist/dist.css",
+  "download_url": "https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/v0.1.8.zip",
   "latest_url": "https://marc-sensenich.github.io/sn-nord-theme/ext.json",
   "marketing_url": "https://github.com/marc-sensenich/sn-nord-theme#readme",
   "dock_icon": {
