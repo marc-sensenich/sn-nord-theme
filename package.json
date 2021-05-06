@@ -1,6 +1,6 @@
 {
   "name": "standardnotes-nord-theme",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "MIT",
   "main": "dist/dist.css",
   "devDependencies": {
