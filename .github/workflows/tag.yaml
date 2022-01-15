@@ -34,7 +34,9 @@ jobs:
           tag-prefix: ''
           commit-message: Release version {{version}}
         env:
-          GITHUB_TOKEN: ${{ steps.github-app.outputs.token }}
+          # From https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps#http-based-git-access-by-an-installation
+          GITHUB_ACTOR: x-access-token
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
 
       - name: Remove 'v' prefix from version-bump tag
         id: version-bump-without-v-prefix
