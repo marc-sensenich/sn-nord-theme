@@ -4,12 +4,19 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: The tag to checkout.
+        required: false
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.ref }}
 
       - name: Remove 'v' prefix from tag
         id: tag-without-v-prefix
