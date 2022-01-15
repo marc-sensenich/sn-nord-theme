@@ -20,7 +20,7 @@ jobs:
 
       - name: Remove 'v' prefix from tag
         id: tag-without-v-prefix
-        run: echo "::set-output name=value::$(echo ${{ github.ref_name }} | tr -d v)"
+        run: echo "::set-output name=value::$(echo ${{ github.event.inputs.ref || github.ref_name }} | tr -d v)"
 
       - name: Generate release ext.json file
         uses: marc-sensenich/sn-extension-description-action@v1
@@ -31,8 +31,8 @@ jobs:
           content_type: SN|Theme
           area: themes
           version: ${{ steps.tag-without-v-prefix.outputs.value }}
-          url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ github.ref_name }}/dist/dist.css
-          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ github.ref_name }}.zip
+          url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ github.event.inputs.ref || github.ref_name }}/dist/dist.css
+          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ github.event.inputs.ref || github.ref_name }}.zip
           latest_url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
           marketing_url: https://github.com/marc-sensenich/sn-nord-theme#readme
           dock_icon_background_color: '#88C0D0'
@@ -43,6 +43,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ github.event.inputs.ref || github.ref_name }}
           files: ext.json
           draft: false
           prerelease: false
