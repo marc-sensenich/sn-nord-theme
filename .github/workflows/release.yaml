@@ -1,11 +1,9 @@
 ---
-name: Release
+name: Create release
 on:
   push:
-    branches: [ $default-branch ]
-    paths:
-      - dist/dist.css
-  workflow_dispatch:
+    tags:
+      - "v*"
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -13,24 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Automated version bump
-        id: version-bump
-        uses: phips28/gh-action-bump-version@e3cde4e376147b58cfa38832db31e73bb214266e
-        with:
-          tag-prefix: ''
-          commit-message: Release version {{version}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Remove 'v' prefix from version-bump tag
-        id: version-bump-without-v-prefix
-        run: echo "::set-output name=tag::$(echo ${{ steps.version-bump.outputs.newTag }} | tr -d v)"
-
-      - name: Checkout gh-pages
-        uses: actions/checkout@v2
-        with:
-          ref: gh-pages
-          path: gh-pages
+      - name: Remove 'v' prefix from tag
+        id: tag-without-v-prefix
+        run: echo "::set-output name=value::$(echo ${{ github.ref_name }} | tr -d v)"
 
       - name: Generate release ext.json file
         uses: marc-sensenich/sn-extension-description-action@v1
@@ -40,19 +23,21 @@ jobs:
           description: An arctic, north-bluish clean and elegant Standard Notes theme.
           content_type: SN|Theme
           area: themes
-          version: ${{ steps.version-bump-without-v-prefix.outputs.tag }}
-          url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ steps.version-bump.outputs.newTag }}/dist/dist.css
-          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip
+          version: ${{ steps.tag-without-v-prefix.outputs.value }}
+          url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ github.ref_name }}/dist/dist.css
+          download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ github.ref_name }}.zip
           latest_url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
           marketing_url: https://github.com/marc-sensenich/sn-nord-theme#readme
           dock_icon_background_color: '#88C0D0'
           dock_icon_foreground_color: '#88C0D0'
           dock_icon_border_color: '#88C0D0'
-          output_path: gh-pages/ext.json
+          output_path: ext.json
 
-      - name: Update gh-pages with latest ext.json file
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          commit_message: "Release version ${{ steps.version-bump.outputs.newTag }}"
-          file_pattern: ext.json
-          repository: gh-pages
+          files: ext.json
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+

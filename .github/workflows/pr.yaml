@@ -3,6 +3,8 @@ name: Pull request
 on:
   pull_request:
     branches: [ $default-branch ]
+    paths:
+      - dist/dist.css
 jobs:
   build:
     runs-on: ubuntu-latest
