@@ -63,4 +63,17 @@
 
   --sn-stylekit-scrollbar-track-border-color: var(--border-color);
   --sn-stylekit-scrollbar-thumb-color: var(--sn-stylekit-info-color);
+
+  // Notes column
+  // Ensure the color of the selected note
+  #notes-column .note.selected,
+  .notes .note.selected {
+    background-color: #{$nord1};
+  }
+
+  // Ensure the colur of a hovered over note
+  #notes-column .note:hover,
+  .notes .note:hover {
+    background-color: #{$nord1};
+  }
 }

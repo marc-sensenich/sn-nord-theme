@@ -44,3 +44,13 @@
   --sn-stylekit-scrollbar-track-border-color: var(--border-color);
   --sn-stylekit-scrollbar-thumb-color: var(--sn-stylekit-info-color);
 }
+:root #notes-column .note.selected,
+:root .notes .note.selected {
+  background-color: #3b4252;
+}
+:root #notes-column .note:hover,
+:root .notes .note:hover {
+  background-color: #3b4252;
+}
+
+/*# sourceMappingURL=dist.css.map */
