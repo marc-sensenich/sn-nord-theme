@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.ref }}
 
       - name: Remove 'v' prefix from tag
         id: tag-without-v-prefix
-        run: echo "::set-output name=value::$(echo ${{ github.event.inputs.ref || github.ref_name }} | tr -d v)"
+        run: echo "value=$(echo ${{ github.event.inputs.ref || github.ref_name }} | tr -d v)" >> $GITHUB_OUTPUT
 
       - name: Generate release ext.json file
         uses: marc-sensenich/sn-extension-description-action@v1
@@ -41,7 +41,7 @@ jobs:
           output_path: ext.json
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.ref || github.ref_name }}
           files: ext.json
