@@ -29,7 +29,7 @@ jobs:
 
       - name: Automated version bump
         id: version-bump
-        uses: phips28/gh-action-bump-version@v11
+        uses: phips28/gh-action-bump-version@v11.0.7
         with:
           tag-prefix: ''
           commit-message: Release version {{version}}
