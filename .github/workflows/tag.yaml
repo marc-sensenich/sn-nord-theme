@@ -40,7 +40,7 @@ jobs:
 
       - name: Remove 'v' prefix from version-bump tag
         id: version-bump-without-v-prefix
-        run: echo "::set-output name=tag::$(echo ${{ steps.version-bump.outputs.newTag }} | tr -d v)"
+        run: echo "value=$(echo ${{ steps.version-bump.outputs.newTag }} | tr -d v)" >> $GITHUB_OUTPUT
 
       - name: Checkout gh-pages
         uses: actions/checkout@v4
