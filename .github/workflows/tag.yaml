@@ -56,7 +56,7 @@ jobs:
           description: An arctic, north-bluish clean and elegant Standard Notes theme.
           content_type: SN|Theme
           area: themes
-          version: ${{ steps.version-bump-without-v-prefix.outputs.tag }}
+          version: ${{ steps.version-bump-without-v-prefix.outputs.value }}
           url: https://cdn.jsdelivr.net/gh/marc-sensenich/sn-nord-theme@${{ steps.version-bump.outputs.newTag }}/dist/dist.css
           download_url: https://github.com/marc-sensenich/sn-nord-theme/archive/refs/tags/${{ steps.version-bump.outputs.newTag }}.zip
           latest_url: https://marc-sensenich.github.io/sn-nord-theme/ext.json
